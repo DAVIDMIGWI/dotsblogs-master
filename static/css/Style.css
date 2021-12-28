@@ -1,5 +1,5 @@
 
-@import url('../css/fonts.css');
+@import url('.../css/fonts.css');
 
 
 html, body{
@@ -38,7 +38,7 @@ a{
 
 .flex-row{
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
@@ -91,21 +91,16 @@ p{
 /* --------------- navbar ----------------- */
 
 .nav{
-
-    position:fixed;
-	border-bottom:2px solid #555;
-	background: white;
+    background: white;
     padding: 0 2rem;
     height: 0rem;
-    width: 99%;
     min-height: 10vh;
+    overflow: hidden;
     transition: height 1s ease-in-out;
-
-
 
 }
 
-.nav .nav-menu{    
+.nav .nav-menu{
     justify-content: space-between;
 }
 
@@ -180,7 +175,7 @@ p{
 
 /* --------------- Site title ---------------- */
 main .site-title{
-    background: url('../static/assets/Background-image.png');
+    background: url('../assets/city.jpg');
     background-size: cover;
     height: 110vh;
     display: flex;
@@ -283,7 +278,7 @@ main .site-content{
 
 main .post-content{
     width: 100%;
-    
+
 }
 
 main .site-content .post-content > .post-image, .post-title{
@@ -352,7 +347,7 @@ main .post-content .post-title a{
 /* --------------- Sidebar ----------------------- */
 
 .site-content > .sidebar .category-list{
-    font-family: var(--Livvic);   
+    font-family: var(--Livvic);
 }
 
 .site-content > .sidebar .category-list .list-items{
