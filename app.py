@@ -32,6 +32,9 @@ def posts():
     else:
         rows = cursor.fetchall()
         return render_template("posts.html", rows=rows)
+@app.route('/logingoogle',methods=['POST'])
+def login():
+    return request.form
 
 
 if __name__ == "__main__":

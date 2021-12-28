@@ -6,32 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-signin-scope" content="profile email">
-            <meta name="google-signin-client_id" content="411020526677-lj6j7a8t96cpeo9901kf854m82bmd7cn.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="411020526677-lj6j7a8t96cpeo9901kf854m82bmd7cn.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>DOTS-BLOGS</title>
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type= "text/css"  href="{{ url_for('static', filename ='../static/css/all.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='../static/css/all.css')}}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans:wght@100;400&family=Lexend+Deca:wght@100&family=Livvic:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans:wght@100;400&family=Lexend+Deca:wght@100&family=Livvic:wght@100&display=swap"
+        rel="stylesheet">
 
     <!-- --------- Owl-Carousel ------------------->
-    <link rel="stylesheet" type= "text/css"  href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/owl.carousel.min.css">
 
 
-    <link rel="stylesheet" type= "text/css" href="../static/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/owl.theme.default.min.css">
 
 
     <!-- ------------ AOS Library ------------------------- -->
-    <link rel="stylesheet" type= "text/css"  href="../static/css/aos.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/aos.css">
 
 
     <!-- Custom Style   -->
-    <link rel="stylesheet"  type= "text/css"  href="../static/css/Style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/Style.css">
 
 
 
@@ -41,7 +44,7 @@
 
     <!-- ----------------------------  Navigation ---------------------------------------------- -->
 
-    <nav class="nav" >
+    <nav class="nav">
         <div class="nav-menu flex-row">
             <div class="nav-brand">
                 <a href="#" class="text-gray">DOTS BLOGS</a>
@@ -71,7 +74,7 @@
                 </ul>
             </div>
 
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">ss</div>
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">ss</div>
             <div class="social text-gray">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -80,64 +83,130 @@
             </div>
         </div>
     </nav>
-
-    <!-- ------------x---------------  Navigation --------------------------x------------------- -->
-
-
-    <!-- Jquery Library file -->
-    <script src="../static/js/Jquery3.4.1.min.js"></script>
-
-
-    <!-- --------- Owl-Carousel js ------------------->
-    <script src="../static/js/owl.carousel.min.js"></script>
-
-
-    <!-- ------------ AOS js Library  ------------------------- -->
-    <script src="../static/js/aos.js"></script>
-
-
-    <!-- Custom Javascript file -->
-    <script src="../static/js/main.js"></script>
+    <!-- *******************************************************************************************
+       * TODO(DEVELOPER): Paste the initialization snippet from:
+       * Firebase Console > Overview > Add Firebase to your web app. *
+       ***************************************************************************************** -->
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
     <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { firebase, initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { GoogleAuthProvider, getAuth, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
-          // Your web app's Firebase configuration
-          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyBjoBAaB_LTteqcTLr2pjaq8qjIBvpkpoE",
-        authDomain: "dotsblogs.firebaseapp.com",
-        projectId: "dotsblogs",
-        storageBucket: "dotsblogs.appspot.com",
-        messagingSenderId: "1077641857570",
-        appId: "1:1077641857570:web:e1900b60dc8a5e2c23d87b",
-        measurementId: "G-BRWJXPK12D"
-      };
-      const GoogleAuth = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(googleAuth)         ;
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-      initializeApp.auth().signInWithPopup
-        function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBjoBAaB_LTteqcTLr2pjaq8qjIBvpkpoE",
+            authDomain: "dotsblogs.firebaseapp.com",
+            projectId: "dotsblogs",
+            storageBucket: "dotsblogs.appspot.com",
+            messagingSenderId: "1077641857570",
+            appId: "1:1077641857570:web:e1900b60dc8a5e2c23d87b",
+            measurementId: "G-BRWJXPK12D"
+        };
 
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      }
+        const provider = new GoogleAuthProvider();
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app)
+        const analytics = getAnalytics(app);
+
+
+        // FirebaseUI config.
+        var uiConfig = {
+            signInSuccessUrl: '<url-to-redirect-to-on-success>',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                GoogleAuthProvider.PROVIDER_ID,
+                // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+                // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+            ],
+            // tosUrl and privacyPolicyUrl accept either url string or a callback
+            // function.
+            // Terms of service url/callback.
+            tosUrl: '<your-tos-url>',
+            // Privacy policy url/callback.
+            privacyPolicyUrl: function () {
+                window.location.assign('<your-privacy-policy-url>');
+            }
+        };
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log(user);
+                let fd = new FormData()
+                fd.append('userName', user.displayName)
+                fd.append('email', user.email)
+                fd.append('email', user.email)
+                fetch('/logingoogle', {
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type': 'application/json'
+
+                    },
+                    body: JSON.stringify(fd)
+                })
+                    .then(res => res.text())
+                    .then(data => console.log(data))
+                    .catch(err => {
+                        console.log(err);
+                    })
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
     </script>
+    </head>
 
-</body>
+    <body>
+        <!-- The surrounding HTML is left untouched by FirebaseUI.
+            Your app may use that space for branding, controls and other customizations.-->
+        <h1>Welcome to My Awesome App</h1>
+        <div id="firebaseui-auth-container"></div>
+
+        <!-- ------------x---------------  Navigation --------------------------x------------------- -->
+
+
+        <!-- Jquery Library file -->
+        <script src="../static/js/Jquery3.4.1.min.js"></script>
+
+
+        <!-- --------- Owl-Carousel js ------------------->
+        <script src="../static/js/owl.carousel.min.js"></script>
+
+
+        <!-- ------------ AOS js Library  ------------------------- -->
+        <script src="../static/js/aos.js"></script>
+
+
+        <!-- Custom Javascript file -->
+        <script src="../static/js/main.js"></script>
+
+    </body>
 
 </html>
