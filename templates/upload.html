@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOTS</title>
+
+    <meta name="google-site-verification" content="ZLPdTf8e0EzM8EOhCMtdAv_jL8GbbKVo6mFj11WPCas"/>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='../static/css/all.css')}}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans:wght@100;400&family=Lexend+Deca:wght@100&family=Livvic:wght@100&display=swap"
+          rel="stylesheet">
+
+    <!-- --------- Owl-Carousel ------------------->
+    <link rel="stylesheet" type="text/css" href="../static/css/owl.carousel.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/owl.theme.default.min.css">
+
+
+    <!-- ------------ AOS Library ------------------------- -->
+    <link rel="stylesheet" type="text/css" href="../static/css/aos.css">
+
+
+    <!-- Custom Style   -->
+    <link rel="stylesheet" type="text/css" href="../static/css/Style.css">
+
+
+</head>
+
+<body>
+
+{% include "navbar.html" %}
+<br><br><br>
+<section>
+    <div class="container">
+        <h2>Upload Form</h2>
+
+<form action="/file" enctype="multipart/form-data" method="POST">
+  <input type="file" name="file" id="">
+  <input type="submit" value="submit">
+</form>
+        <form action="/upload" method="post">
+
+            <br>
+            <label><b>Author</b></label><br>
+            <textarea name="author" id="author" cols="100" rows="1" placeholder="Content...." class="form-control"
+                      required></textarea>
+
+            <br><br>
+            <label><b>Title</b></label><br>
+            <textarea name="title" id="title" cols="100" rows="2" placeholder="Content...." class="form-control"
+                      required></textarea>
+
+            <br><br>
+            <label><b>Category</b></label><br>
+            <textarea name="category" id="category" cols="100" rows="2" placeholder="Category....e,g celebrities,sport,
+            news,health,food..." class="form-control" required></textarea>
+
+            <br><br>
+            <label><b>Image 1</b></label><br>
+            <textarea name="image1" id="image1" cols="100" rows="2" placeholder="image 1(url)...." class="form-control"
+                      required></textarea>
+
+            <br><br>
+            <label><b>Image 2</b></label><br>
+            <textarea name="image2" id="image2" cols="100" rows="2" placeholder="Image 2(url)....(Optional)" class="form-control"></textarea>
+
+            <br><br>
+            <label><b>Image 3</b></label><br>
+            <textarea name="image3" id="image3" cols="100" rows="2" placeholder="Image 3(url)....(Optional)" class="form-control"></textarea>
+
+            <br><br>
+            <label for="content"><b>Description</b></label><br>
+            <textarea name="descc" id="description" cols="100" rows="4" placeholder="Description...."
+                      class="form-control" required></textarea>
+
+            <br><br>
+            <label for="content"><b>Content</b></label><br>
+            <textarea name="content" id="content" cols="100" rows="7" placeholder="Content...." class="form-control"
+                      required></textarea>
+
+            <br><br>
+            <input type="submit" value="Post" class="btn btn-success">
+            <input type="reset" value="RESET" class="btn btn-warning">
+            <!--flash message-->
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+                          <li class="text-success">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endwith %}
+                    {% block body %}{% endblock %}
+        </form>
+    </div>
+
+</section>
+<br><br>
+<!--footer -->
+{% include "footer.html" %}
+
+
+<!-- Jquery Library file -->
+<script src="../static/js/Jquery3.4.1.min.js"></script>
+
+
+<!-- --------- Owl-Carousel js ------------------->
+<script src="../static/js/owl.carousel.min.js"></script>
+
+
+<!-- ------------ AOS js Library  ------------------------- -->
+<script src="../static/js/aos.js"></script>
+
+
+<!-- Custom Javascript file -->
+<script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

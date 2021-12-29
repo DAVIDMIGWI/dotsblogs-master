@@ -1,10 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-scope" content="profile email">
+    <title>DOTS</title>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='../static/css/all.css')}}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans:wght@100;400&family=Lexend+Deca:wght@100&family=Livvic:wght@100&display=swap"
+        rel="stylesheet">
+
+    <!-- --------- Owl-Carousel ------------------->
+    <link rel="stylesheet" type="text/css" href="../static/css/owl.carousel.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/owl.theme.default.min.css">
+
+
+    <!-- ------------ AOS Library ------------------------- -->
+    <link rel="stylesheet" type="text/css" href="../static/css/aos.css">
+
+
+    <!-- Custom Style   -->
+    <link rel="stylesheet" type="text/css" href="../static/css/Style.css">
+
+
+
 </head>
+
 <body>
-$END$
+{% include "navbar.html" %}
+<br><br><br><br>
+<section>
+ <div class="container">
+
+    <section>
+
+            <form action="/contact" method="POST">
+
+                <h2>CONTACT US</h2>
+
+                <br>
+                <label for="">NAME</label>
+                <input type="text" name="name" placeholder="NAME"><br>
+
+                 <br>
+                <label for="">PHONE</label>
+                <input type="teL" name="phone" placeholder="PHONE"><br>
+
+                <br>
+                <label for="">EMAIL</label>
+                <input type="email"  name="email" placeholder="EMAIL"><br>
+
+                <br>
+                <label for="">MESSAGE</label>
+                <br>
+                <textarea name="message" id="" cols="50" rows="4" class="form-control"></textarea><br>
+                {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+                          <li class="text-success">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endwith %}
+                    {% block body %}{% endblock %}
+                <br>
+                <input type="submit" value="Send Message" class="btn btn-success">
+                <input type="reset" class="btn btn-warning" value="Reset">
+            </form>
+
+    </section>
+ </div>
+</section>
+<br><br>
+<!--footer -->
+{% include "footer.html" %}
+
+
+<!-- Jquery Library file -->
+<script src="../static/js/Jquery3.4.1.min.js"></script>
+
+
+<!-- --------- Owl-Carousel js ------------------->
+<script src="../static/js/owl.carousel.min.js"></script>
+
+
+<!-- ------------ AOS js Library  ------------------------- -->
+<script src="../static/js/aos.js"></script>
+
+
+<!-- Custom Javascript file -->
+<script src="../static/js/main.js"></script>
+
 </body>
+
 </html>

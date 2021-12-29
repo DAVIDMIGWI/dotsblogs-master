@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id"
-        content="411020526677-lj6j7a8t96cpeo9901kf854m82bmd7cn.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <title>DOTS-BLOGS</title>
+    <meta name="google-signin-scope" content="profile email"> 
+    <title>DOTS</title>
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
@@ -47,7 +44,9 @@
     <nav class="nav">
         <div class="nav-menu flex-row">
             <div class="nav-brand">
-                <a href="#" class="text-gray">DOTS BLOGS</a>
+                <a class="navbar-brand" href="/">
+                  <img src="../static/assets/dots.jpg" alt="" width="10%">
+              </a>
             </div>
             <div class="toggle-collapse">
                 <div class="toggle-icons">
@@ -57,29 +56,39 @@
             <div>
                 <ul class="nav-items">
                     <li class="nav-link">
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                     </li>
+
                     <li class="nav-link">
-                        <a href="/posts">posts</a>
+                        <a href="/test">testl</a>
                     </li>
+
                     <li class="nav-link">
-                        <a href="#">Archive</a>
+                        <a href="/international">international</a>
                     </li>
+
                     <li class="nav-link">
-                        <a href="#">Pages</a>
+                        <a href="https://www.facebook.com/profile.php?id=100076735953359"><i class="fab fa-facebook-f"></i></a>
                     </li>
+
                     <li class="nav-link">
-                        <a href="#">Contact Us</a>
+                        <a href="https://twitter.com/DotsBlogs"><i class="fab fa-twitter"></i></a>
                     </li>
+
+                    <li class="nav-link">
+                        <a href="https://www.instagram.com/dotsblogs/"><i class="fab fa-instagram"></i></a>
+                    </li>
+
+
+
+
                 </ul>
             </div>
 
-            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">ss</div>
             <div class="social text-gray">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+
+
+
             </div>
         </div>
     </nav>
@@ -138,56 +147,45 @@
                 window.location.assign('<your-privacy-policy-url>');
             }
         };
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                console.log(user);
-                let fd = new FormData()
-                fd.append('userName', user.displayName)
-                fd.append('email', user.email)
-                fd.append('email', user.email)
-                fetch('/logingoogle', {
-                    method: 'POST',
-
-                    headers: {
-                        'Content-Type': 'application/json'
-
-                    },
-                    body: JSON.stringify(fd)
-                })
-                    .then(res => res.text())
-                    .then(data => console.log(data))
-                    .catch(err => {
-                        console.log(err);
-                    })
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
-            });
-
-        // Initialize the FirebaseUI Widget using Firebase.
-        var ui = new auth.AuthUI(firebase.auth());
-        // The start method will wait until the DOM is loaded.
-        ui.start('#firebaseui-auth-container', uiConfig);
+        // signInWithPopup(auth, provider)
+        //     .then((result) => {
+        //         // This gives you a Google Access Token. You can use it to access the Google API.
+        //         const credential = GoogleAuthProvider.credentialFromResult(result);
+        //         const token = credential.accessToken;
+        //         // The signed-in user info.
+        //         const user = result.user;
+        //         console.log(user);
+        //         let fd = new FormData()
+        //         fd.append('userName', user.displayName)
+        //         fd.append('email', user.email)
+        //         fd.append('pic', user.photoURL)
+        //         fd.append('uid', user.uid)
+        //         fetch('/logingoogle', {
+        //             method: 'POST', 
+        //             body:fd
+        //         })
+        //             .then(res => res.text())
+        //             .then(data => console.log(data))
+        //             .catch(err => {
+        //                 console.log(err);
+        //             })
+        //         // ...
+        //     }).catch((error) => {
+        //         // Handle Errors here.
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         // The email of the user's account used.
+        //         const email = error.email;
+        //         // The AuthCredential type that was used.
+        //         const credential = GoogleAuthProvider.credentialFromError(error);
+        //         // ...
+        //     });
+ 
     </script>
-    </head>
 
-    <body>
         <!-- The surrounding HTML is left untouched by FirebaseUI.
             Your app may use that space for branding, controls and other customizations.-->
-        <h1>Welcome to My Awesome App</h1>
-        <div id="firebaseui-auth-container"></div>
+ 
 
         <!-- ------------x---------------  Navigation --------------------------x------------------- -->
 
@@ -207,6 +205,6 @@
         <!-- Custom Javascript file -->
         <script src="../static/js/main.js"></script>
 
-    </body>
+</body>
 
 </html>

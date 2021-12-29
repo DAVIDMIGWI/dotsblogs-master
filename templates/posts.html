@@ -1,34 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>posts</title>
+<style>
+img {
+  float: left;
+}
+</style>
 </head>
 <body>
 
-<div class="container-fluid">
-           <h1 class="bg-primary text-white">post </h1>
-            <section class="row">
-                {% for row in rows %}
-                    <div class="col-md-3">
-                       <div class="card">
-                           <div class="card-body text-center">
-                             <h4>{{row[2]}}</h4>
-                              <img src="../static/{{row[12]}}" alt="" class="img_fluid" width="70%" >
-                               <br>
-                               <p class="text-muted">{{row[3]}}</p>
-                                <b><strike>KES{{row[4]}}</strike></b>
-                                <b class="text-warning">KES{{row[5]}}</b>
-                               <!--below we access a single route providing the current product id-->
-                                <a href="/single/{{row[0]}}" class="btn btn-info">Read More</a>
-                                <br><br>
-                           </div>
+<h2>Float Right</h2>
 
-                       </div>
-                    </div>
-                {% endfor %}
-            </section>
-        </div>
+<p>In this example, the image will float to the right in the paragraph, and the text in the paragraph will wrap around the image.</p>
+
+<p><img src="pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-left:15px;">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi
+    lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget,
+    auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.</p>
 
 </body>
 </html>

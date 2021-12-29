@@ -1,7 +1,42 @@
 
 @import url('.../css/fonts.css');
 
-
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
 html, body{
     margin: 0%;
     box-sizing: border-box;
@@ -14,7 +49,7 @@ html, body{
     --text-gray: #3f4954;
     --text-light : #686666da;
     --bg-color: #0f0f0f;
-    --white: #ffffff;
+    --white: #ffffff;   
     --midnight: #104f55;
 
     /* gradient color   */
@@ -91,12 +126,15 @@ p{
 /* --------------- navbar ----------------- */
 
 .nav{
-    background: white;
+    position: fixed;
+    width: 100%;
+    z-index: 6;
+    background: rgb(243, 239, 239);
     padding: 0 2rem;
     height: 0rem;
     min-height: 10vh;
-    overflow: hidden;
     transition: height 1s ease-in-out;
+    
 
 }
 
@@ -156,17 +194,6 @@ p{
     font-size: 1.6rem;
 }
 
-.nav .social{
-    padding: 1.4rem 0
-}
-
-.nav .social i{
-    padding: 0 .2rem;
-}
-
-.nav .social i:hover{
-    color: #a1c4cf;
-}
 
 /* -------x------- navbar ---------x------- */
 
@@ -174,13 +201,6 @@ p{
 /* ----------------- Main Content----------- */
 
 /* --------------- Site title ---------------- */
-main .site-title{
-    background: url('../assets/city.jpg');
-    background-size: cover;
-    height: 110vh;
-    display: flex;
-    justify-content: center;
-}
 
 main .site-title .site-background{
     padding-top: 10rem;
@@ -248,14 +268,16 @@ section .container .owl-nav{
     top: 0%;
     margin: 0 auto;
     width: 100%;
+    autoplay:true;
+    autoplayTimeout:1000
 }
 
-.owl-nav .owl-prev .owl-nav-prev,
-.owl-nav .owl-next .owl-nav-next{
-    color: var(--text-gray);
-    background: transparent;
-    font-size: 2rem;
-}
+
+
+ 
+
+
+ 
 
 .owl-theme .owl-nav [class*='owl-']:hover{
     background: transparent;
@@ -325,7 +347,7 @@ main .post-content .post-title a{
 
 .site-content .pagination{
     justify-content: center;
-    color: var(--text-gray);
+    color: var(--text-black);
     margin: 4rem 0;
 }
 
@@ -346,11 +368,11 @@ main .post-content .post-title a{
 
 /* --------------- Sidebar ----------------------- */
 
-.site-content > .sidebar .category-list{
+.site-content > .sidebar .popular-post{
     font-family: var(--Livvic);
 }
 
-.site-content > .sidebar .category-list .list-items{
+.site-content > .sidebar .popular-post .list-items{
     background: var(--sky);
     padding: .4rem 1rem;
     margin: .8rem 0;
@@ -360,7 +382,7 @@ main .post-content .post-title a{
     justify-content: space-between;
 }
 
-.site-content > .sidebar .category-list .list-items a{
+.site-content > .sidebar .popular-post .list-items a{
     color:  black;
 }
 
@@ -477,7 +499,7 @@ footer.footer .instagram div > img{
 
 footer.footer .follow div i{
     color: var(--white);
-    padding: 0 .4rem;
+    padding: 0 .30rem;
 }
 
 footer.footer .rights{

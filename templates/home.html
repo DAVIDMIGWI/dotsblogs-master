@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DOTS-BLOGS</title>
+    <title>DOTS</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" type= "text/css"  href="{{ url_for('static', filename ='../static/css/all.css')}}">
@@ -43,57 +43,57 @@
     <!----------------------------- Main Site Section ------------------------------>
 
     <main>
+       
+       <section>
+        {% for row in rows %}
+        
 
-        <!------------------------ Site Title ---------------------->
-
-        <section class="site-title">
-            <div class="site-background" data-aos="fade-up" data-aos-delay="100">
-                <h3>Tours & Travels</h3>
-                <h1>Amazing Place on Earth</h1>
-                <button class="btn">Explore</button>
+        <div style='z-index:5' id="{{row[0]}}modal" class="modal">
+            
+            <div class="modal-content">
+              <span onclick='closeModal("{{ row[0] }}modal")' class="close">&times;</span>
+              <br />
+              <br />
+              <br />
+              <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+              <div class="post-image">
+                  <div>
+                      <img src="{{row[2]}}" class="img" height="400" alt="blog1">
+                  </div>
+                  <div class="post-info flex-row">
+                      <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp; dotsblogs.com</span>
+                      <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;{{row[8]}}</span>
+                      <span>2 Commets</span>
+                  </div>
+              </div>
+              <div class="post-title">
+                  <a href="#"> 
+                    {{row[5]}}
+                  </a>
+                  <p>
+                    {{row[6]}}
+                  </p> 
+              </div>
+          </div>
             </div>
-        </section>
-
-        <!------------x----------- Site Title ----------x----------->
-
-        <!-- --------------------- Blog Carousel ----------------- -->
-
-        <section>
+          
+          </div>
+        {% endfor %} 
             <div class="blog">
                 <div class="container">
                     <div class="owl-carousel owl-theme blog-post">
-                        <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
-                            <img src="../static/assets/Blog-post/post-1.jpg" alt="post-1">
+                        {% for row in rows %}
+                        <div onclick=" openModal('{{ row[0] }}modal')" class="blog-content" data-aos="fade-in" data-aos-delay="200">
+                            <img src="{{row[2]}}" alt="post-1">
                             <div class="blog-title">
-                                <h3>London Fashion week's continued the evolution</h3>
-                                <button class="btn btn-blog">Fashion</button>
+                                <h3> {{row[5]}} </h3>
+                                <button class="btn btn-blog">{{row[1]}}</button>
                                 <span>2 minutes</span>
                             </div>
-                        </div>
-                        <div class="blog-content" data-aos="fade-in" data-aos-delay="200">
-                            <img src="../static/assets/Blog-post/post-3.jpg" alt="post-1">
-                            <div class="blog-title">
-                                <h3>London Fashion week's continued the evolution</h3>
-                                <button class="btn btn-blog">Fashion</button>
-                                <span>2 minutes</span>
-                            </div>
-                        </div>
-                        <div class="blog-content" data-aos="fade-left" data-aos-delay="200">
-                            <img src="../static/assets/Blog-post/post-2.jpg" alt="post-1">
-                            <div class="blog-title">
-                                <h3>London Fashion week's continued the evolution</h3>
-                                <button class="btn btn-blog">Fashion</button>
-                                <span>2 minutes</span>
-                            </div>
-                        </div>
-                        <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
-                            <img src="../static/assets/Blog-post/post-5.png" alt="post-1">
-                            <div class="blog-title">
-                                <h3>London Fashion week's continued the evolution</h3>
-                                <button class="btn btn-blog">Fashion</button>
-                                <span>2 minutes</span>
-                            </div>
-                        </div>
+                            
+                       
+                        </div> 
+                        {% endfor %} 
                     </div>
                     <div class="owl-navigation">
                         <span class="owl-nav-prev"><i class="fas fa-long-arrow-alt-left"></i></span>
@@ -109,8 +109,10 @@
 
         <section class="container">
             <div class="site-content">
-                <div class="posts">
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                <div class="posts" >
+<!--                  <div id="posts"></div>-->
+                {% for row in rows %}
+                    <div  onclick=" openModal('{{ row[0] }}modal')" class="post-content" data-aos="zoom-in" data-aos-delay="200">
                         <div class="post-image">
                             <div>
                                 <img src="../static/assets/Blog-post/blog1.png" class="img" alt="blog1">
@@ -132,204 +134,19 @@
                             <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="../static/assets/Blog-post/blog2.png" class="img" alt="blog1">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                                <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 16, 2019</span>
-                                <span>7 Commets</span>
-                            </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">Why should boys have all the fun? it's the women who are making india an
-                                alcohol-loving contry</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
-                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
-                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
-                                illum similique veniam tempore unde?
-                            </p>
-                            <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="../static/assets/Blog-post/blog3.png" class="img" alt="blog1">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                                <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 19, 2019</span>
-                                <span>5 Commets</span>
-                            </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">New data recording system to better analyse road accidents</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
-                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
-                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
-                                illum similique veniam tempore unde?
-                            </p>
-                            <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="../static/assets/Blog-post/blog4.png" class="img" alt="blog1">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                                <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 21, 2019</span>
-                                <span>12 Commets</span>
-                            </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">New data recording system to better analyse road accidents</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
-                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
-                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
-                                illum similique veniam tempore unde?
-                            </p>
-                            <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
+                    {% endfor %}
                     <div class="pagination flex-row">
-                        <a href="#"><i class="fas fa-chevron-left"></i></a>
-                        <a href="#" class="pages">1</a>
-                        <a href="#" class="pages">2</a>
-                        <a href="#" class="pages">3</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i></a>
-                    </div>
+                        <div id="loader"></div>
+                        <!-- <a href="#" class="btn btn-info">Load more</a> -->
+                    </div>  
                 </div>
+
+
                 <aside class="sidebar">
                     <div class="category">
-                        <h2>Category</h2>
-                        <ul class="category-list">
-                            <li class="list-items" data-aos="fade-left" data-aos-delay="100">
-                                <a href="#">Software</a>
-                                <span>(05)</span>
-                            </li>
-                            <li class="list-items" data-aos="fade-left" data-aos-delay="200">
-                                <a href="#">Techonlogy</a>
-                                <span>(02)</span>
-                            </li>
-                            <li class="list-items" data-aos="fade-left" data-aos-delay="300">
-                                <a href="#">Lifestyle</a>
-                                <span>(07)</span>
-                            </li>
-                            <li class="list-items" data-aos="fade-left" data-aos-delay="400">
-                                <a href="#">Shopping</a>
-                                <span>(01)</span>
-                            </li>
-                            <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                                <a href="#">Food</a>
-                                <span>(08)</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="popular-post">
                         <h2>Popular Post</h2>
-                        <div class="post-content" data-aos="flip-up" data-aos-delay="200">
-                            <div class="post-image">
-                                <div>
-                                    <img src="../static/assets/popular-post/m-blog-1.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019</span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content" data-aos="flip-up" data-aos-delay="300">
-                            <div class="post-image">
-                                <div>
-                                    <img src="../static/assets/popular-post/m-blog-2.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019</span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content" data-aos="flip-up" data-aos-delay="400">
-                            <div class="post-image">
-                                <div>
-                                    <img src="../static/assets/popular-post/m-blog-3.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019</span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content" data-aos="flip-up" data-aos-delay="500">
-                            <div class="post-image">
-                                <div>
-                                    <img src="../static/assets/popular-post/m-blog-4.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019</span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content" data-aos="flip-up" data-aos-delay="600">
-                            <div class="post-image">
-                                <div>
-                                    <img src="../static/assets/popular-post/m-blog-5.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019</span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="newsletter" data-aos="fade-up" data-aos-delay="300">
-                        <h2>Newsletter</h2>
-                        <div class="form-element">
-                            <input type="text" class="input-element" placeholder="Email">
-                            <button class="btn form-btn">Subscribe</button>
-                        </div>
-                    </div>
-                    <div class="popular-tags">
-                        <h2>Popular Tags</h2>
-                        <div class="tags flex-row">
-                            <span class="tag" data-aos="flip-up" data-aos-delay="100"><a href="#">Software</a></span>
-                            <span class="tag" data-aos="flip-up" data-aos-delay="200"><a href="#">technology</a></span>
-                            <span class="tag" data-aos="flip-up" data-aos-delay="300"><a href="#">travel</a></span>
-                            <span class="tag" data-aos="flip-up" data-aos-delay="400"><a href="#">illustration</a></span>
-                            <span class="tag" data-aos="flip-up" data-aos-delay="500"><a href="#">design</a></span>
-                            <span class="tag" data-aos="flip-up" data-aos-delay="600"><a href="#">lifestyle</a></span>
-                            <span class="tag" data-aos="flip-up" data-aos-delay="700"><a href="#">love</a></span>
-                            <span class="tag" data-aos="flip-up" data-aos-delay="800"><a href="#">project</a></span>
-                        </div>
+                        <div id="postSidebar"></div> 
+                   
                     </div>
                 </aside>
             </div>
@@ -360,6 +177,97 @@
 
     <!-- Custom Javascript file -->
     <script src="../static/js/main.js"></script>
+    <script src="../static/js/app.js"></script>
+<script>
+    module('Autoplay tests');
+
+function FakeClock() {
+	// Instantiate a new controllable clock which overrides the built in Date
+	// class on construction.
+	var value = 1;
+
+	this.tick = function(duration) {
+		value += duration;
+	};
+	// TODO: This is broken and has to be fixed in the near future
+	this.Date = function() {
+		this.getTime = function() {
+			return value;
+		}
+	}
+}
+
+function change_timeout(autoplay, first, second, wait) {
+	var clock = new FakeClock();
+
+	// This is a helper function to test multiple consecutive play calls with
+	// different timeout values. Four steps will be completed by this function:
+
+	// 1. The autoplay will be played in a stopped state with the first timeout.
+	autoplay.stop();
+	autoplay.play(first);
+
+	// 2. Time will be forwarded a given wait time.
+	clock.tick(wait);
+
+	// 3. The autoplay will be paused.
+	autoplay.pause();
+
+	// 4. The autoplay will be played with the second timeout.
+	autoplay.play(second);
+}
+
+// test('stopping the autoplay timer', function() {
+// 	expect(2);
+//
+// 	var clock = new FakeClock();
+//
+// 	var carousel = $('#simple').owlCarousel().data('owl.carousel');
+// 	var autoplay = carousel._plugins.autoplay;
+//
+// 	clock.tick(1);
+//
+// 	autoplay.stop();
+// 	autoplay.play();
+//
+// 	equal(autoplay.read(), 0);
+//
+// 	autoplay.pause();
+// 	autoplay.play();
+//
+// 	equal(autoplay.read(), 0);
+// });
+// TODO: See todo above, seems to be broken since a while as we are trying to assign the global const Date to a new function
+// test('changing autoplay timeout values', function() {
+// 	expect(4);
+//
+// 	var carousel = $('#simple').owlCarousel().data('owl.carousel');
+// 	var autoplay = carousel._plugins.autoplay;
+//
+// 	// Changing the timeout from 2000 to 3000 after 3000 ticks should maintain
+// 	// the elapsed time (1000) since the last transition.
+// 	change_timeout(autoplay, 2000, 3000, 3000);
+// 	equal(autoplay.read() % 3000, 1000);
+//
+// 	// Changing the timeout from 4000 to 5000 after 12000 ticks should maintain
+// 	// the elapsed time (0) since the last transition.
+// 	change_timeout(autoplay, 4000, 5000, 12000);
+// 	equal(autoplay.read() % 5000, 0);
+//
+// 	// Changing the timeout from 5000 to 4000 after 12000 ticks should maintain
+// 	// the elapsed time (2000) since the last transition.
+// 	change_timeout(autoplay, 5000, 4000, 12000);
+// 	equal(autoplay.read() % 4000, 2000);
+//
+// 	// Changing the timeout from 11000 to 6000 after 19000 ticks should reset
+// 	// the elapsed timer value (7000) since the last transition to 0, because
+// 	// it is larger than the timeout value.
+// 	change_timeout(autoplay, 11000, 6000, 19000);
+// 	equal(autoplay.read() % 6000, 0);
+// });
+
+</script>
+
 
 </body>
 
