@@ -6,7 +6,9 @@ from flask import render_template
 from werkzeug.utils import secure_filename
 import re
 import os
-UPLOAD_FOLDER = '/static'
+
+# removed the '/' , it would affect the directory referencing, advisable to create a fresh 'uploads' directory and use it instead
+UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
@@ -15,7 +17,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 
 # establish db connection
-connection = pymysql.connect(host="localhost", port=3306, user="root", password="", database="blogs")
+# changed the db connection credentials to match my server
+connection = pymysql.connect(
+    host="localhost", port=3306, user="root", password="", database="dots")
 
 
 @app.route("/")
@@ -43,7 +47,7 @@ def test():
         return render_template("test.html", rows=rows)
 
     except:
-        return render_template("test.html" , rows=[])
+        return render_template("test.html", rows=[])
 
 
 @app.route("/upload", methods=["POST", "GET"])
@@ -57,18 +61,30 @@ def upload():
         descc = request.form["descc"]
         content = request.form["content"]
 
+        # fetch the selected file
+        file = request.files['file']
+        uploaded_file = 'N/A'
+
+        # if there is a file selected, upload it
+        if file:
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            uploaded_file = filename
+
         # to a table for reviews
+        # TODO : Create a column on the 'posts' table to save the uploaded_file
         sql = "insert into posts(category, image1,image2,image3,title,descc,content) values(%s,%s,%s,%s,%s,%s,%s)"
         cursor = connection.cursor()
         try:
             cursor.execute(sql, (category, image1, image2,
-                           image3, title, descc, content))
+                                 image3, title, descc, content))
             connection.commit()
 
             flash("Review Posted Successfully")
-            return render_template("upload.html")
+            # pass the filename to be displayed on the frontend
+            return render_template("upload.html", filename=uploaded_file)
         except:
-            return render_template("upload.html")
+            return render_template("upload.html", filename=uploaded_file)
 
     else:
         flash("Post Posted Successfully")
@@ -157,8 +173,8 @@ def allowed_file(filename):
 def filefuns():
     if request.method == 'POST':
         f = request.files['file']
-        fn = os.path.basename(f.filename.replace("\\", "/" )) 
-        f.save( './static/',fn)
+        fn = os.path.basename(f.filename.replace("\\", "/"))
+        f.save('./static/', fn)
         return os.path.join(app.config['UPLOAD_FOLDER'])+"/"+fn
 
 
